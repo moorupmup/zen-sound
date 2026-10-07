@@ -171,8 +171,8 @@ noise-generator/
 
 ```bash
 # 1. Клонируйте репозиторий
-git clone https://github.com/your-username/noise-generator.git
-cd noise-generator
+git clone https://github.com/moorupmup/zen-sound.git
+cd zen-sound
 
 # 2. Установите npm-зависимости (Tauri CLI)
 npm install
