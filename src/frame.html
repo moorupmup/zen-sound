@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZenSound Desktop Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: radial-gradient(circle at 50% 20%, #161828 0%, #080910 100%);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      overflow: hidden;
+    }
+    .window-container {
+      width: 920px;
+      height: 750px;
+      background: #0b0b14;
+      border-radius: 14px;
+      box-shadow: 0 35px 80px -15px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+    .titlebar {
+      height: 38px;
+      background: rgba(20, 21, 35, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 14px;
+      user-select: none;
+    }
+    .titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .titlebar-icon {
+      width: 18px;
+      height: 18px;
+      color: #00f2fe;
+    }
+    .titlebar-title {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: #9ca3af;
+      letter-spacing: 0.3px;
+    }
+    .window-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .win-btn {
+      color: #6b7280;
+      font-size: 11px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.15s;
+    }
+    .win-btn:hover {
+      color: #f3f4f6;
+    }
+    .win-btn.close:hover {
+      color: #ef4444;
+    }
+    .app-frame {
+      width: 100%;
+      height: calc(100% - 38px);
+      border: none;
+      background: #0b0b14;
+    }
+  </style>
+</head>
+<body>
+  <div class="window-container">
+    <div class="titlebar">
+      <div class="titlebar-left">
+        <svg class="titlebar-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3V21M12 3C11.5 5.5 8 9 8 12C8 15 11.5 18.5 12 21M12 3C12.5 5.5 16 9 16 12C16 15 12.5 18.5 12 21M6 12H18M7.5 7.5L16.5 16.5M16.5 7.5L7.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="titlebar-title">ZenSound — Шумы природы для расслабления и фокуса</span>
+      </div>
+      <div class="window-controls">
+        <span class="win-btn">─</span>
+        <span class="win-btn">□</span>
+        <span class="win-btn close">✕</span>
+      </div>
+    </div>
+    <iframe class="app-frame" id="frame"></iframe>
+  </div>
+
+  <script>
+    const search = window.location.search || '';
+    document.getElementById('frame').src = 'index.html' + search;
+  </script>
+</body>
+</html>
