@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZenSound — Звуки природы для расслабления и фокуса</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script type="module" src="/main.js" defer></script>
+  </head>
+
+  <body>
+    <!-- Background Animated Aurora/Blobs -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <div class="app-container">
+      <!-- Header -->
+      <header class="app-header">
+        <div class="logo-area">
+          <svg class="app-logo" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3V21M12 3C11.5 5.5 8 9 8 12C8 15 11.5 18.5 12 21M12 3C12.5 5.5 16 9 16 12C16 15 12.5 18.5 12 21M6 12H18M7.5 7.5L16.5 16.5M16.5 7.5L7.5 16.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <div>
+            <h1>ZenSound</h1>
+            <p class="subtitle">Ваш оазис спокойствия и фокуса</p>
+          </div>
+        </div>
+        
+        <div class="header-controls">
+          <!-- Sleep Timer -->
+          <div class="timer-container" id="timer-container">
+            <button class="icon-btn timer-btn" id="timer-toggle-btn" title="Таймер сна">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+              <span id="timer-display" class="timer-display">Выкл</span>
+            </button>
+            <div class="timer-dropdown hidden" id="timer-dropdown">
+              <div class="timer-options">
+                <button data-time="0" class="active">Выкл</button>
+                <button data-time="5">5 мин</button>
+                <button data-time="15">15 мин</button>
+                <button data-time="30">30 мин</button>
+                <button data-time="45">45 мин</button>
+                <button data-time="60">1 ч</button>
+                <button data-time="90">1.5 ч</button>
+                <button data-time="120">2 ч</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Section -->
+      <main class="main-content">
+        <!-- Master Control Bar -->
+        <div class="master-panel glass-panel">
+          <div class="master-left">
+            <button class="play-all-btn" id="master-play-btn" title="Воспроизвести всё">
+              <svg class="icon-play" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z"/>
+              </svg>
+              <svg class="icon-pause hidden" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              </svg>
+              <span>Запустить всё</span>
+            </button>
+            
+            <button class="action-btn" id="master-mute-btn" title="Выключить звук">
+              <svg class="icon-unmuted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              </svg>
+              <svg class="icon-muted hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <line x1="23" y1="9" x2="17" y2="15"/>
+                <line x1="17" y1="9" x2="23" y2="15"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="master-right">
+            <span class="volume-label">Громкость:</span>
+            <input type="range" id="master-volume" min="0" max="100" value="80" class="volume-slider">
+            <span id="master-volume-value" class="volume-value">80%</span>
+          </div>
+        </div>
+
+        <!-- Presets -->
+        <section class="presets-section">
+          <h3>Пресеты</h3>
+          <div class="presets-container">
+            <button class="preset-btn" data-preset="cozy-fire">Уютный камин</button>
+            <button class="preset-btn" data-preset="summer-storm">Летний шторм</button>
+            <button class="preset-btn" data-preset="forest-river">Лесной ручей</button>
+            <button class="preset-btn" data-preset="deep-sleep">Глубокий сон</button>
+            <button class="preset-btn btn-danger" id="reset-btn">Сбросить всё</button>
+          </div>
+        </section>
+
+        <!-- Sound Grid -->
+        <section class="sound-grid">
+          <!-- Heavy Rain -->
+          <div class="sound-card glass-panel" data-sound="heavy-rain">
+            <div class="sound-icon-container">
+              <svg class="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/>
+                <line x1="8" y1="16" x2="6" y2="22"/>
+                <line x1="12" y1="18" x2="10" y2="24"/>
+                <line x1="16" y1="16" x2="14" y2="22"/>
+              </svg>
+            </div>
+            <div class="sound-info">
+              <h4>Ливень</h4>
+              <p>Плотный шум сильного дождя</p>
+            </div>
+            <div class="sound-controls">
+              <button class="sound-toggle-btn">Вкл</button>
+              <input type="range" min="0" max="100" value="50" class="sound-volume">
+            </div>
+          </div>
+
+          <!-- Forest Rain -->
+          <div class="sound-card glass-panel" data-sound="forest-rain">
+            <div class="sound-icon-container">
+              <svg class="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22v-8m0 0l-4-4m4 4l4-4M12 10v-6m0 0l-3-3m3 3l3-3"/>
+                <path d="M17 14.5a3 3 0 0 0-2-2.8m-8 2.8a3 3 0 0 1 2-2.8"/>
+                <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/>
+                <line x1="8" y1="18" x2="7" y2="20"/>
+                <line x1="16" y1="18" x2="15" y2="20"/>
+              </svg>
+            </div>
+            <div class="sound-info">
+              <h4>Лесной дождь</h4>
+              <p>Шелест листвы и капли дождя</p>
+            </div>
+            <div class="sound-controls">
+              <button class="sound-toggle-btn">Вкл</button>
+              <input type="range" min="0" max="100" value="50" class="sound-volume">
+            </div>
+          </div>
+
+          <!-- Wind -->
+          <div class="sound-card glass-panel" data-sound="wind">
+            <div class="sound-icon-container">
+              <svg class="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
+              </svg>
+            </div>
+            <div class="sound-info">
+              <h4>Ветер</h4>
+              <p>Мягкое дуновение осеннего ветра</p>
+            </div>
+            <div class="sound-controls">
+              <button class="sound-toggle-btn">Вкл</button>
+              <input type="range" min="0" max="100" value="50" class="sound-volume">
+            </div>
+          </div>
+
+          <!-- Stream -->
+          <div class="sound-card glass-panel" data-sound="stream">
+            <div class="sound-icon-container">
+              <svg class="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 8c2.5-1.5 5.5-1.5 8 0s5.5 1.5 8 0M2 12c2.5-1.5 5.5-1.5 8 0s5.5 1.5 8 0M2 16c2.5-1.5 5.5-1.5 8 0s5.5 1.5 8 0"/>
+              </svg>
+            </div>
+            <div class="sound-info">
+              <h4>Ручей</h4>
+              <p>Спокойное журчание воды</p>
+            </div>
+            <div class="sound-controls">
+              <button class="sound-toggle-btn">Вкл</button>
+              <input type="range" min="0" max="100" value="50" class="sound-volume">
+            </div>
+          </div>
+
+          <!-- Fireplace -->
+          <div class="sound-card glass-panel" data-sound="fireplace">
+            <div class="sound-icon-container">
+              <svg class="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3z"/>
+              </svg>
+            </div>
+            <div class="sound-info">
+              <h4>Камин</h4>
+              <p>Уютное потрескивание дров</p>
+            </div>
+            <div class="sound-controls">
+              <button class="sound-toggle-btn">Вкл</button>
+              <input type="range" min="0" max="100" value="50" class="sound-volume">
+            </div>
+          </div>
+
+          <!-- Thunderstorm -->
+          <div class="sound-card glass-panel" data-sound="thunderstorm">
+            <div class="sound-icon-container">
+              <svg class="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 16.9A5 5 0 0 0 18 7h-1.26a8 8 0 1 0-11.62 8.58"/>
+                <polyline points="13 11 9 17 12 17 9 23"/>
+              </svg>
+            </div>
+            <div class="sound-info">
+              <h4>Гроза</h4>
+              <p>Далекие раскаты грома и молния</p>
+            </div>
+            <div class="sound-controls">
+              <button class="sound-toggle-btn">Вкл</button>
+              <input type="range" min="0" max="100" value="50" class="sound-volume">
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app-footer">
+        <p>Создано для расслабления, медитации и глубокой концентрации.</p>
+      </footer>
+    </div>
+  </body>
+</html>
